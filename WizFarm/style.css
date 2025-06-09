@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    background:linear-gradient(black, rgb(0, 0, 0), black);
+    min-height: 200vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+.name{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    margin-left: 7%;
+    margin-top: 2%;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.name:hover{
+    color: rgb(0, 255, 255);
+    cursor: pointer;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 7%;
+}
+nav button{
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: .9em;
+    font-weight: 300;
+    margin-left: .4em;
+    margin-top: 2%;
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 10px;
+}
+
+nav button:hover{
+    background-color: rgb(0, 21, 35);
+    color: rgb(0, 255, 255);
+    box-shadow: 0 0 70px rgb(0, 255, 255);
+    
+}
+
+
+@media only screen and (max-width: 650px){
+    header{
+        flex-direction: column;
+        align-items: center;
+    }
+    nav{
+        margin: 0;
+    }
+}
+/* navbar and header ends */
+
+
+#intro{
+    height: 100vh;
+
+}
+
+.mainName {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 5em;
+    font-weight: bold;
+    color: rgb(0, 234, 255);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.492);
+    opacity: 1;
+    margin: 0.5em 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+
+.mainName:hover {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 100px rgb(255, 255, 255);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.subName {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    color: rgba(0, 234, 255, 0.465);
+    opacity: 1;
+    margin: 0.5em 0;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+
+#eventsButton{
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    color: rgba(0, 234, 255, 0.465);
+    opacity: 1;
+    margin: 0.5em 0;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}   
+
+#eventsButton:hover {
+    color: rgb(0, 213, 255);
+    text-shadow: 0 0 50px rgb(255, 255, 255);
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+
+
+/* section 2 Designing */
+
+#event1, #event2, #event3{
+    min-height: 100vh;
+        display: flex;
+        align-items: center;
+    justify-content: center;
+}
+
+#event1{    background-color: rgb(114, 197, 129);}
+#event2{background-image: url(/images/cards/gaming/bg2.jpg); background-size: cover;}
+#event3{background-image: url(images/cards/coding/bgCode.jpg); background-size: cover;}
+#event2 .imgSq{
+    background-color: transparent;
+}
+#event3 .imgSq{
+    scale: 1.1;
+    background-color: rgba(255, 255, 255, 0.079);
+    backdrop-filter: blur(10px);
+}
+
+
+#event2 .T1{color: rgb(255, 255, 255); left: 75vw; font-size: 7em; top: 25vh;}
+#event3 .T1{color: rgb(251, 255, 0); left: 40vw; font-size: 7em; top: 25vh;}
+
+.imgcontainer{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.imgSq{
+    position: inherit;
+    width: 70vw;
+    height: 70vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 0 100px rgb(0, 0, 0);
+}
+
+#imgC11{
+    scale: .7;
+    position: absolute;
+    left: 2vw;
+    top: 129vh;
+    z-index: 1;
+
+}
+
+#imgC12{
+width: 800px;
+height: 800px;
+position: absolute;
+left: 7vw;
+top: 110vh;
+z-index: 0;
+}
+
+.T1{
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-size: 6em;
+    font-weight: bold;
+    color: rgb(114, 197, 129);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0);
+    opacity: 1;
+    margin: 0.5em 0;
+    top: 10%;
+    left: 99%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+    z-index: 2;
+}
+
+#imgC31, #imgC32{
+    scale: .4;
+    position: absolute;
+    left: 40vw;
+    top: 2vh;
+    z-index: 0;}
+    #imgC32{z-index: -1; left: 30vw;
+    top: 0vh;}

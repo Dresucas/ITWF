@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item" ">
+                <img src="image/bgCode.png">
+                <div class="content" >
+                    <div class="author" style="backdrop-filter: blur(10px);">IT WizFarm Event#1</div>
+                    <div class="title" style="backdrop-filter: blur(10px);">ByteCoder</div>
+                    <div class="topic" style="color: Orange;" style="backdrop-filter: blur(10px);">Code and Debug</div>
+                    <div class="des" style="backdrop-filter: blur(10px);">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis?
+                     </div>
+                    <div class="buttons">
+                        <button style="backdrop-filter: blur(10px);">Details</button>
+                        <button style="backdrop-filter: blur(10px);">Query?</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/bgGame.png">
+                <div class="content">
+                    <div class="author"  style="backdrop-filter: blur(10px);">IT WizFarm Event#2</div>
+                    <div class="title" style="backdrop-filter: blur(10px);">Gaming</div>
+                    <div class="topic" style="backdrop-filter: blur(10px);">GameFun</div>
+                    <div class="des" style="backdrop-filter: blur(10px);">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis?
+                    </div>
+                    <div class="buttons" style="backdrop-filter: blur(10px);">
+                        <button style="backdrop-filter: blur(10px);">Details</button>
+                        <button style="backdrop-filter: blur(10px);">Query?</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/bgPhoto.jpg">
+                <div class="content">
+                    <div class="author" style="backdrop-filter: blur(10px);">IT WizFarm Event#3</div>
+                    <div class="title" style="backdrop-filter: blur(10px);">Photography</div>
+                    <div class="topic" style="backdrop-filter: blur(10px);">PhotoMania</div>
+                    <div class="des" style="backdrop-filter: blur(10px);">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, officiis?
+                    </div>
+                    <div class="buttons" style="backdrop-filter: blur(10px);">
+                        <button style="backdrop-filter: blur(10px);">Details</button>
+                        <button style="backdrop-filter: blur(10px);">Query?</button>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="image/bgCode.png">
+                <div class="content">
+                    <div class="title" style="font-size: 25px; font-weight: 800; color: chartreuse;">
+                        ByteCoder
+                    </div>
+                    <div class="description">
+                        #CodeEvent@ITW
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/bgGame.png">
+                <div class="content">
+                    <div class="title" style="font-size: 25px; font-weight: 800; color: chartreuse;">
+                        GameFun
+                    </div>
+                    <div class="description">
+                        #GamingEvent@ITW
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/bgPhoto.jpg">
+                <div class="content">
+                    <div class="title" style="font-size: 25px; font-weight: 800; color: chartreuse;">
+                        PhotoMania
+                    </div>
+                    <div class="description">
+                        #PhotoEvent@ITW
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
