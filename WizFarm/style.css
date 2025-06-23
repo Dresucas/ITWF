@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+
+}
 
 body{
     margin: 0;
@@ -12,7 +18,6 @@ body{
 
 .name{
     color: white;
-    font-family: 'Poppins', sans-serif;
     font-size: 1em;
     margin-left: 7%;
     margin-top: 2%;
@@ -29,6 +34,8 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(3px);
+    animation: appear 10s;
 }
 
 nav{
@@ -73,17 +80,21 @@ nav button:hover{
 
 #intro{
     height: 100vh;
+    
 
 }
 
 .mainName {
     position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 5em;
-    font-weight: bold;
-    color: rgb(0, 234, 255);
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.492);
+
+    font-size: 6em;
+    letter-spacing: 20px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+        text-shadow: 0 0 30px rgb(255, 255, 255);
+
     opacity: 1;
+    z-index: 2;
     margin: 0.5em 0;
     top: 50%;
     left: 50%;
@@ -93,19 +104,22 @@ nav button:hover{
 
 .mainName:hover {
     color: rgb(255, 255, 255);
-    text-shadow: 0 0 100px rgb(255, 255, 255);
+    text-shadow: 0 0 30px rgb(255, 255, 255);
+    letter-spacing: 5px;
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0);
     opacity: 1;
     cursor: pointer;
+
 }
 
 .subName {
     position: absolute;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3em;
-    color: rgba(0, 234, 255, 0.465);
+    color: rgb(0, 234, 255);
     opacity: 1;
     margin: 0.5em 0;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: .3s;
@@ -115,110 +129,94 @@ nav button:hover{
     position: absolute;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3em;
-    color: rgba(0, 234, 255, 0.465);
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 2px solid rgba(0, 234, 255, 0);
     opacity: 1;
-    margin: 0.5em 0;
+    width: 5vw;
+    height: 5vh;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: .3s;
-    background: none;
-    border: none;
+    transition: .4s;
+    border-radius: 5px;
     cursor: pointer;
+    overflow: hidden;
 }   
 
 #eventsButton:hover {
-    color: rgb(0, 213, 255);
-    text-shadow: 0 0 50px rgb(255, 255, 255);
+
+        color: rgb(0, 255, 21);
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+/* #codeBlock{
+    position: absolute;
+    left: 50vw;
+background:linear-gradient(rgb(0, 143, 179), rgb(0, 50, 58), rgb(0, 30, 31));
+    border-radius: 10px;
+    top: 40vh;
+    width: 25vw;
+    height: 40vh;
+    line-height: 30px;
+    padding-left: 30px;
+    transform: perspective(1000px) rotateY(-10deg) rotateX(10deg);
+    transition: .5s;
+    z-index: 0;
+    box-shadow: 0 0 100px rgba(0, 225, 255, 0.432);
+}
+#codeBlock:hover{
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    box-shadow: 0 0 100px rgba(0, 225, 255, 0)
+}
+.fg{
+
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 0 50px rgb(0, 0, 0);
+    border-radius: 10px;
+    position: absolute;
+    top: 5vh;
+    left: 1.5vw;
+    padding-left: 20px;
+    width: 22vw;
+    height: 30vh;
+    z-index: 0;
+    transform: rotate(2deg);
+    filter:brightness(40%);
+    transition: .4s;
+}
+.fg:hover{
+    transform: rotate(0deg);
+    filter:brightness(150%);
+}
+
+.fg #code{
+    font-size: 1em;
+    color: rgba(0, 234, 255, 0.465);
     opacity: 1;
+    margin: 0.5em 0;
+    position: absolute;
+    top: -30px;
+    transition: .3s;
+    background: none;
+    filter: blur(0px);
+    border: none;
     cursor: pointer;
 }
 
-
-
-
-/* section 2 Designing */
-
-#event1, #event2, #event3{
-    min-height: 100vh;
-        display: flex;
-        align-items: center;
-    justify-content: center;
-}
-
-#event1{    background-color: rgb(114, 197, 129);}
-#event2{background-image: url(/images/cards/gaming/bg2.jpg); background-size: cover;}
-#event3{background-image: url(images/cards/coding/bgCode.jpg); background-size: cover;}
-#event2 .imgSq{
-    background-color: transparent;
-}
-#event3 .imgSq{
-    scale: 1.1;
-    background-color: rgba(255, 255, 255, 0.079);
-    backdrop-filter: blur(10px);
-}
-
-
-#event2 .T1{color: rgb(255, 255, 255); left: 75vw; font-size: 7em; top: 25vh;}
-#event3 .T1{color: rgb(251, 255, 0); left: 40vw; font-size: 7em; top: 25vh;}
-
-.imgcontainer{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.imgSq{
-    position: inherit;
-    width: 70vw;
-    height: 70vh;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 0 100px rgb(0, 0, 0);
-}
-
-#imgC11{
-    scale: .7;
-    position: absolute;
-    left: 2vw;
-    top: 129vh;
-    z-index: 1;
-
-}
-
-#imgC12{
-width: 800px;
-height: 800px;
-position: absolute;
-left: 7vw;
-top: 110vh;
-z-index: 0;
-}
-
-.T1{
-    position: relative;
-    font-family: 'Poppins', sans-serif;
-    font-size: 6em;
-    font-weight: bold;
-    color: rgb(114, 197, 129);
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0);
-    opacity: 1;
-    margin: 0.5em 0;
-    top: 10%;
-    left: 99%;
-    transform: translate(-50%, -50%);
-    transition: .3s;
-    z-index: 2;
-}
-
-#imgC31, #imgC32{
-    scale: .4;
-    position: absolute;
-    left: 40vw;
-    top: 2vh;
-    z-index: 0;}
-    #imgC32{z-index: -1; left: 30vw;
-    top: 0vh;}
+.fg #code:hover{
+filter: blur(0px);
+} */
