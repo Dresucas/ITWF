@@ -7,12 +7,14 @@ document.body.appendChild(canvas);
 var ctx = canvas.getContext('2d');
 var particles = [];
 var mouse = {};
+var mouseTrail = [];
 var symbols = ['<', '>', '||', '[', ']', '{', '}', ';', ':', '=', '+', '-', '*', '/', '%', '&', '|', '^', '~', '`', '!', '@', '#', '$', '?', '.', ','];
-var color = 'rgba(0, 167, 186, 0.62)';
+var color = 'rgba(0, 255, 191, 0.43)';
+var blastColor = 'rgb(255, 255, 255)';
 
 function init() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 1;
+    canvas.height = window.innerHeight * 2;
     for (var i = 0; i < 1000; i++) {
         particles.push({
             x: Math.random() * canvas.width,
@@ -24,17 +26,24 @@ function init() {
             opacity: 0
         });
     }
+    
     document.addEventListener('mousemove', function(e) {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
-        // var parallaxFactorX = (e.clientX / window.innerWidth - 0.5) * 2;
-        // var parallaxFactorY = (e.clientY / window.innerHeight - 0.5) * 2;
-        
-        // for (var i = 0; i < particles.length; i++) {
-        //     particles[i].x += parallaxFactorX * particles[i].z * 0.1;
-        //     particles[i].y += parallaxFactorY * particles[i].z * 0.1;
-        // }
+        mouseTrail.push({
+            x: mouse.x,
+            y: mouse.y,
+            vx: Math.random() * 2 - 1,
+            vy: Math.random() * 2 - 1,
+            sym: symbols[Math.floor(Math.random() * symbols.length)],
+            z: Math.random() * 10,
+            opacity: 1
+        });
+        if (mouseTrail.length > 100) {
+            mouseTrail.splice(0, 1);
+        }
     });
+
     window.addEventListener('resize', function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight * 2;
@@ -50,7 +59,7 @@ function draw() {
     for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
         ctx.font = 'bold ' + (p.z + 5) + 'px Courier New';
-        ctx.fillStyle = color;
+        ctx.fillStyle = p.color || color;
         ctx.globalAlpha = p.opacity;
         ctx.fillText(p.sym, p.x, p.y);
         p.x += p.vx;
@@ -66,6 +75,22 @@ function draw() {
         p.opacity += 0.01;
         if (p.opacity > 1) {
             p.opacity = 1;
+        }
+    }
+    for (var i = 0; i < mouseTrail.length; i++) {
+        var p = mouseTrail[i];
+        ctx.font = 'bold ' + (p.z + 5) + 'px Courier New';
+        ctx.fillStyle = p.color || blastColor;
+        ctx.globalAlpha = p.opacity;
+        ctx.fillText(p.sym, p.x, p.y);
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height * 1.99) {
+            mouseTrail.splice(i, 1);
+        }
+        p.opacity -= 0.02;
+        if (p.opacity < 0) {
+            mouseTrail.splice(i, 1);
         }
     }
     requestAnimationFrame(draw);
