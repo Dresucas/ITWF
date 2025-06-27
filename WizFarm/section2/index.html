@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar"></div>
+    <div class="side">
+
+        <p class="name">Events @ ITWF</p>
+        <hr color="rgb(0, 126, 109)">
+        <div class="event" id="game">Gaming</div>
+        <div class="event" id="code">Coding</div>
+        <div class="event" id="photo">Photography</div>
+        <div class="event" id="event5">Music Production</div>     
+        <div class="event" id="event6">Designing</div>
+
+    </div>
+
+
+
+    <div class="previewborder"></div>
+    <div class="preview" id="preview">
+        <p class="default">Click An Event To See Details.</p>
+        <script>
+            var canvas = document.createElement('canvas');
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.filter = 'blur(2px)';
+            preview.appendChild(canvas);
+            var ctx = canvas.getContext('2d');
+            var particles = [];
+            var mouse = {};
+            var color = 'rgba(0, 146, 110, 1)';
+
+            function init() {
+                canvas.width = preview.offsetWidth;
+                canvas.height = preview.offsetHeight;
+                for (var i = 0; i < 100; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: Math.random() * 1 - 0.5,
+                        vy: Math.random() * 1 - 0.5,
+                        sym: String.fromCharCode(Math.floor(Math.random() * 95) + 32),
+                        z: Math.random() * 10,
+                        opacity: 0
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.sort(function(a, b) {
+                    return b.z - a.z;
+                });
+                for (var i = 0; i < particles.length; i++) {
+                    var p = particles[i];
+                    ctx.font = 'bold ' + (p.z + 5) + 'px Courier New';
+                    ctx.fillStyle = p.color || color;
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fillText(p.sym, p.x, p.y);
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
+                        p.x = Math.random() * canvas.width;
+                        p.y = Math.random() * canvas.height;
+                    }
+                    p.opacity += 0.01;
+                    if (p.opacity > 1) {
+                        p.opacity = 1;
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+
+            init();
+            draw();
+        </script>
+    </div>
+
+    <script>
+    var events = document.querySelectorAll(".event");
+    var preview = document.getElementById("preview");
+    events.forEach(function(event){
+        event.addEventListener("click", function(){
+            events.forEach(function(event){
+                event.style.transition = "background-color 0.5s ease";
+                event.style.backgroundColor = "black";
+                event.style.color = "white";
+            });
+            this.style.transition = "background-color 0.5s ease, color 0.5s ease";
+            this.style.backgroundColor = "white";
+            this.style.color = "black";
+
+            preview.style.transition = "background-color 0.5s ease";
+            preview.style.backgroundColor = "black";
+            preview.style.boxShadow = "0px 0px 100px rgba(0, 0, 0, 1)";
+        });
+    });
+
+    document.addEventListener("click", function(e) {
+        if (![...events].includes(e.target)) {
+            events.forEach(function(event){
+                event.style.transition = "background-color 0.5s ease";
+                event.style.backgroundColor = "black";
+                event.style.color = "white";
+            });
+            preview.style.transition = "background-color 0.5s ease";
+            preview.style.backgroundColor = "black";
+            preview.style.scale = "1";
+            preview.style.boxShadow = "10px 10px 20px rgba(0, 0, 0, 1);";
+        }
+    });
+
+</script>
+
+<script>
+    document.getElementById("game").addEventListener("click", function(){
+        var cover = document.createElement("div");
+        cover.style.userSelect = "none";
+        cover.style.position = "absolute";
+        cover.style.top = "0";
+        cover.style.left = "0";
+        cover.style.width = "100%";
+        cover.style.height = "100%";
+        cover.style.background = "conic-gradient(from 0deg, black, rgb(42, 0, 121) 70%)";
+        cover.style.opacity = "0";
+        cover.style.borderRadius = "10px";
+        cover.style.transition = "opacity 0.5s ease";
+        cover.style.zIndex = "10";
+        
+        var img1 = document.createElement("img");
+        img1.src = "gaming1.png";
+        img1.style.position = "absolute";
+        img1.style.top = "70%";
+        img1.style.left = "95%";
+        img1.style.transform = "translate(-50%, -50%)";
+        img1.style.maxWidth = "80%";
+        img1.style.maxHeight = "80%";
+        img1.style.zIndex = "11";
+        img1.style.transition = "opacity 1s ease";
+        img1.style.opacity = "0";
+        img1.style.filter = "drop-shadow(0px 0px 10px black)";
+        setTimeout(function() {
+            img1.style.opacity = "1";
+        }, 200);
+
+        var img2 = document.createElement("img");
+        img2.src = "gaming2.png";
+        img2.style.position = "absolute";
+        img2.style.top = "80%";
+        img2.style.left = "5%";
+        img2.style.transform = "translate(-50%, -50%)";
+        img2.style.maxWidth = "50%";
+        img2.style.maxHeight = "50%";
+        img2.style.transition = "opacity 1s ease";
+        img2.style.opacity = "0";
+        img2.style.filter = "drop-shadow(0px 0px 10px black)";
+        img2.style.zIndex = "11";
+        setTimeout(function() {
+            img2.style.opacity = "1";
+        }, 200);
+
+        img1.addEventListener("mouseover", function(){
+            img1.style.filter = "drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4))";
+            img1.style.transition = "filter 0.5s ease";
+        });
+        img1.addEventListener("mouseout", function(){
+            img1.style.filter = "drop-shadow(0px 0px 10px black)";
+            img1.style.transition = "filter 0.5s ease";
+        });
+
+        img2.addEventListener("mouseover", function(){
+            img2.style.filter = "drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.4))";
+            img2.style.transition = "filter 0.5s ease";
+        });
+        img2.addEventListener("mouseout", function(){
+            img2.style.filter = "drop-shadow(0px 0px 10px black)";
+            img2.style.transition = "filter 0.5s ease";
+        });
+
+        cover.appendChild(img1);
+        cover.appendChild(img2);
+
+        var heading = document.createElement("h1");
+        heading.innerHTML = "Gaming";
+        heading.style.position = "absolute";
+        heading.style.top = "5%";
+        heading.style.left = "20%";
+        heading.style.transform = "translate(-50%, -50%)";
+        heading.style.fontSize = "3em";
+        heading.style.fontFamily = "montserrat";
+        heading.style.color = "white";
+        heading.style.textShadow = "0 0 10px black";
+        cover.appendChild(heading);
+
+        var description = document.createElement("p");
+        description.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        description.style.position = "absolute";
+        description.style.top = "50%";
+        description.style.left = "40%"
+        description.style.transform = "translate(-50%, -50%)";
+        description.style.fontSize = "1.3em";
+        description.style.lineHeight = "1.5em";
+        description.style.backdropFilter = "blur(10px)";
+        description.style.background = "rgba(0, 0, 0, 0.2)";
+        description.style.fontFamily = "montserrat";
+        description.style.color = "white";
+        description.style.zIndex = "10";
+        description.style.textShadow = "0 0 10px black";
+        cover.appendChild(description);
+
+        var buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
+        buttonContainer.style.position = "absolute";
+        buttonContainer.style.bottom = "5%";
+        buttonContainer.style.gap = "1em";        
+        buttonContainer.style.left = "50%";
+        buttonContainer.style.transform = "translate(-50%, -50%)";
+
+        var queryButton = document.createElement("button");
+        queryButton.innerHTML = "Query";
+        queryButton.style.background = "none";
+        queryButton.style.border = "1px solid white";
+        queryButton.style.color = "white";
+        queryButton.style.padding = "1em 2em";
+        queryButton.style.cursor = "pointer";
+        queryButton.style.borderRadius = "5px";
+                    queryButton.style.fontSize = "1em";
+        queryButton.style.transition = "all 0.5s ease";
+        queryButton.addEventListener("mouseover", function() {
+            queryButton.style.background = "black";
+            queryButton.style.boxShadow = "0 0 40px black";
+            queryButton.style.fontSize = "1.1em";
+            queryButton.style.border = "1px solid black";
+        });
+        queryButton.addEventListener("mouseout", function() {
+            queryButton.style.background = "none";
+            queryButton.style.border = "1px solid white";   
+            queryButton.style.boxShadow = "0 0 0px black";
+            queryButton.style.fontSize = "1em";
+        });
+
+        var registerButton = document.createElement("button");
+        registerButton.innerHTML = "Register";
+        registerButton.style.borderRadius = "5px";
+        registerButton.style.background = "none";
+        registerButton.style.border = "1px solid white";
+                    registerButton.style.fontSize = "1em";
+        registerButton.style.color = "white";
+        registerButton.style.padding = "1em 2em";
+        registerButton.style.cursor = "pointer";
+        registerButton.style.transition = "all 0.5s ease";
+        registerButton.addEventListener("mouseover", function() {
+            registerButton.style.background = "black";
+            registerButton.style.border = "1px solid black";
+            registerButton.style.fontSize = "1.1em";
+            registerButton.style.boxShadow = "0 0 40px black";
+        });
+        registerButton.addEventListener("mouseout", function() {
+            registerButton.style.background = "none";
+            registerButton.style.border = "1px solid white";
+            registerButton.style.boxShadow = "0 0 0px black";
+            registerButton.style.fontSize = "1em";
+        });
+
+        buttonContainer.appendChild(queryButton);
+        buttonContainer.appendChild(registerButton);
+
+        cover.appendChild(buttonContainer);
+
+        
+
+
+
+        preview.appendChild(cover);
+        setTimeout(function() {
+            cover.style.opacity = "1";
+        }, 10);
+        
+        document.addEventListener("click", function(e) {
+            if (![...preview.children, ...cover.children, cover].includes(e.target) && e.target !== document.getElementById("game")) {
+                cover.style.transition = "opacity 0.5s ease";
+                cover.style.opacity = "0";
+                setTimeout(function() {
+                    cover.remove();
+                }, 500);
+            }
+        });
+    });
+</script>
+
+
+<script>
+    document.getElementById("code").addEventListener("click", function(){
+        var cover = document.createElement("div");
+        cover.style.position = "absolute";
+        cover.style.top = "0";
+        cover.style.left = "0";
+        cover.style.width = "100%";
+        cover.style.height = "100%";
+        cover.style.background = "conic-gradient(from 180deg, black 40%, rgb(255, 100, 0), black)";
+        cover.style.transition = "opacity 0.5s ease";
+        cover.style.borderRadius = "10px";
+        cover.style.opacity = "0";
+        setTimeout(function() {
+            cover.style.opacity = "1";
+        }, 10);
+
+        preview.appendChild(cover);
+
+        var img = document.createElement("img");
+        img.src = "code1.gif";
+        img.style.position = "absolute";
+        img.style.bottom = "10%";
+        img.style.left = "10%";
+        img.style.maxWidth = "50%";
+        img.style.maxHeight = "50%";
+        img.style.transition = "opacity 1s ease";
+        img.style.opacity = "0";
+
+        var img2 = document.createElement("img");
+        img2.src = "ruby.png";
+        img2.style.position = "absolute";
+        img2.style.bottom = "-10%";
+        img2.style.right = "0%";
+        img2.style.maxWidth = "50%";
+        img2.style.maxHeight = "50%";
+        img2.style.transition = "opacity 1s ease, bottom 1s ease";
+        img2.style.opacity = "0";
+        img2.style.zIndex = "12";
+        img2.className = "codeMan";
+        setTimeout(function() {
+            img2.style.opacity = "1";
+            img2.style.bottom = "0%";
+        }, 200);
+
+        var img3 = document.createElement("img");
+        img3.src = "python-language.png";
+        img3.style.position = "absolute";
+        img3.style.bottom = "-20%";
+        img3.style.right = "0%";
+        img3.style.maxWidth = "40%";
+        img3.style.maxHeight = "40%";
+        img3.style.transition = "opacity 1s ease, bottom 1s ease";
+        img3.style.opacity = "0";
+        img3.style.zIndex = "13";
+        img3.className = "codeMan";
+        setTimeout(function() {
+            img3.style.opacity = "1";
+            img3.style.bottom = "0%";
+        }, 200);
+
+        setTimeout(function() {
+            img.style.opacity = "1";
+            img.style.bottom = "10%";
+        }, 200);
+
+        cover.appendChild(img);
+        cover.appendChild(img2);
+        cover.appendChild(img3);
+
+
+var heading = document.createElement("h1");
+heading.innerHTML = "Coding";
+heading.style.position = "absolute";
+heading.style.top = "5%";
+heading.style.fontFamily = "montserrat";
+heading.style.left = "50%";
+heading.style.transform = "translate(-50%, -50%)";
+heading.style.fontSize = "3em";
+heading.style.color = "white";
+heading.style.textShadow = "0 0 10px black";
+cover.appendChild(heading);
+
+        var buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
+        buttonContainer.style.position = "absolute";
+        buttonContainer.style.bottom = "5%";
+        buttonContainer.style.gap = "1em";        
+        buttonContainer.style.left = "50%";
+        buttonContainer.style.transform = "translate(-50%, -50%)";
+
+        var queryButton = document.createElement("button");
+        queryButton.innerHTML = "Query";
+        queryButton.style.background = "none";
+        queryButton.style.border = "1px solid white";
+        queryButton.style.color = "white";
+        queryButton.style.padding = "1em 2em";
+        queryButton.style.cursor = "pointer";
+        queryButton.style.borderRadius = "5px";
+                    queryButton.style.fontSize = "1em";
+        queryButton.style.transition = "all 0.5s ease";
+        queryButton.addEventListener("mouseover", function() {
+            queryButton.style.background = "black";
+            queryButton.style.boxShadow = "0 0 40px rgb(255, 100,0)";
+            queryButton.style.fontSize = "1.1em";
+            queryButton.style.border = "1px solid black";
+        });
+        queryButton.addEventListener("mouseout", function() {
+            queryButton.style.background = "none";
+            queryButton.style.border = "1px solid white";   
+            queryButton.style.boxShadow = "0 0 0px black";
+            queryButton.style.fontSize = "1em";
+        });
+
+        var registerButton = document.createElement("button");
+        registerButton.innerHTML = "Register";
+        registerButton.style.borderRadius = "5px";
+        registerButton.style.background = "none";
+        registerButton.style.border = "1px solid white";
+                    registerButton.style.fontSize = "1em";
+        registerButton.style.color = "white";
+        registerButton.style.padding = "1em 2em";
+        registerButton.style.cursor = "pointer";
+        registerButton.style.transition = "all 0.5s ease";
+        registerButton.addEventListener("mouseover", function() {
+            registerButton.style.background = "black";
+            registerButton.style.border = "1px solid black";
+            registerButton.style.fontSize = "1.1em";
+            registerButton.style.boxShadow = "0 0 40px rgb(255, 100,0)";
+        });
+        registerButton.addEventListener("mouseout", function() {
+            registerButton.style.background = "none";
+            registerButton.style.border = "1px solid white";
+            registerButton.style.boxShadow = "0 0 0px black";
+            registerButton.style.fontSize = "1em";
+        });
+
+        buttonContainer.appendChild(queryButton);
+        buttonContainer.appendChild(registerButton);
+
+        cover.appendChild(buttonContainer);
+
+
+
+        var p = document.createElement("p");
+        p.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex. Cum sociis natoque penatibus et magnis dis parturient montes.";
+        p.style.position = "absolute";
+        p.style.textAlign = "justify";
+        p.style.backdropFilter = "blur(10px)";
+        p.style.background = "rgba(0, 0, 0, 0.2)";
+        p.style.bottom = "-10%";
+        p.style.left = "50%";
+        p.style.height = "40%";
+        p.style.transform = "translate(-50%, -50%)";
+        p.style.fontSize = "1.5em";
+        p.style.color = "white";
+        p.style.textShadow = "0 0 10px black";
+        cover.appendChild(p);
+
+
+
+
+
+
+        document.addEventListener("click", function(e) {
+            if (![...cover.children, cover].includes(e.target) && e.target !== document.getElementById("code")) {
+                cover.style.transition = "opacity 0.5s ease";
+                cover.style.opacity = "0";
+                setTimeout(function() {
+                    cover.remove();
+                }, 500);
+            }
+        });
+    });
+</script>
+
+
+<script>
+    document.getElementById("photo").addEventListener("click", function(){
+        var cover = document.createElement("div");
+        cover.style.position = "absolute";
+        cover.style.top = "0";
+        cover.style.left = "0";
+        cover.style.width = "100%";
+        cover.style.height = "100%";
+        cover.style.background = "conic-gradient(from 180deg, rgb(60, 200, 100),black)";
+        cover.style.transition = "opacity 0.5s ease";
+        cover.style.borderRadius = "10px";
+        cover.style.opacity = "0";
+        setTimeout(function() {
+            cover.style.opacity = "1";
+        }, 10);
+
+        preview.appendChild(cover);
+        var img1 = document.createElement("img");
+        img1.src = "cam1.png";
+        img1.style.position = "absolute";
+        img1.style.top = "-20%";
+        img1.style.left = "70%";
+        img1.style.maxWidth = "40%";
+        img1.style.maxHeight = "40%";
+        img1.style.transition = "top 0.5s ease, opacity 0.5s ease";
+        img1.style.opacity = "0";
+        cover.appendChild(img1);
+
+        setTimeout(function() {
+            img1.style.top = "20%";
+            img1.style.opacity = "1";
+        }, 200);
+
+        var img2 = document.createElement("img");
+        img2.src = "cam2.png";
+        img2.style.position = "absolute";
+        img2.style.top = "-20%";
+        img2.style.left = "70%";
+        img2.style.maxWidth = "40%";
+        img2.style.maxHeight = "40%";
+        img2.style.transition = "top 0.5s ease, opacity 0.5s ease";
+        img2.style.opacity = "0";
+        cover.appendChild(img2);
+
+        setTimeout(function() {
+            img2.style.top = "50%";
+            img2.style.opacity = "1";
+        }, 200);
+
+        var heading = document.createElement("h1");
+        heading.innerHTML = "Photography";
+        heading.style.position = "absolute";
+        heading.style.top = "5%";
+        heading.style.left = "5%";
+        heading.style.fontFamily = "montserrat";
+        heading.style.fontSize = "3em";
+        heading.style.color = "white";
+        heading.style.textShadow = "0 0 10px black";
+        cover.appendChild(heading);
+
+        var description = document.createElement("p");
+        description.innerHTML = "Explore the world of photography with our exciting events and sessions. Capture the beauty around you and enhance your skills.";
+        description.style.position = "absolute";
+        description.style.bottom = "15%";
+        description.style.left = "35%";
+        description.style.transform = "translate(-50%, -50%)";
+        description.style.fontSize = "1.3em";
+        description.style.lineHeight = "1.5em";
+        description.style.backdropFilter = "blur(10px)";
+        description.style.background = "rgba(0, 0, 0, 0.2)";
+        description.style.fontFamily = "montserrat";
+        description.style.color = "white";
+        description.style.zIndex = "10";
+        description.style.textShadow = "0 0 10px black";
+        cover.appendChild(description);
+
+
+
+        var buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
+        buttonContainer.style.position = "absolute";
+        buttonContainer.style.bottom = "5%";
+        buttonContainer.style.gap = "1.5em";        
+        buttonContainer.style.left = "50%";
+        buttonContainer.style.transform = "translate(-50%, -50%)";
+
+        var queryButton = document.createElement("button");
+        queryButton.innerHTML = "Query";
+        queryButton.style.background = "none";
+        queryButton.style.border = "1px solid white";
+        queryButton.style.color = "white";
+        queryButton.style.padding = "1em 2em";
+        queryButton.style.cursor = "pointer";
+        queryButton.style.borderRadius = "5px";
+                    queryButton.style.fontSize = "1em";
+        queryButton.style.transition = "all 0.5s ease";
+        queryButton.addEventListener("mouseover", function() {
+            queryButton.style.background = "black";
+            queryButton.style.boxShadow = "0 0 40px black";
+            queryButton.style.fontSize = "1.1em";
+            queryButton.style.border = "1px solid black";
+        });
+        queryButton.addEventListener("mouseout", function() {
+            queryButton.style.background = "none";
+            queryButton.style.border = "1px solid white";   
+            queryButton.style.boxShadow = "0 0 0px black";
+            queryButton.style.fontSize = "1em";
+        });
+
+        var registerButton = document.createElement("button");
+        registerButton.innerHTML = "Register";
+        registerButton.style.borderRadius = "5px";
+        registerButton.style.background = "none";
+        registerButton.style.border = "1px solid white";
+                    registerButton.style.fontSize = "1em";
+        registerButton.style.color = "white";
+        registerButton.style.padding = "1em 2em";
+        registerButton.style.cursor = "pointer";
+        registerButton.style.transition = "all 0.5s ease";
+        registerButton.addEventListener("mouseover", function() {
+            registerButton.style.background = "black";
+            registerButton.style.border = "1px solid black";
+            registerButton.style.fontSize = "1.1em";
+            registerButton.style.boxShadow = "0 0 40px black";
+        });
+        registerButton.addEventListener("mouseout", function() {
+            registerButton.style.background = "none";
+            registerButton.style.border = "1px solid white";
+            registerButton.style.boxShadow = "0 0 0px black";
+            registerButton.style.fontSize = "1em";
+        });
+
+        buttonContainer.appendChild(queryButton);
+        buttonContainer.appendChild(registerButton);
+
+        cover.appendChild(buttonContainer);
+
+        
+
+
+
+        document.addEventListener("click", function(e) {
+        if (![...cover.children, cover].includes(e.target) && e.target !== document.getElementById("photo")) {
+                cover.style.transition = "opacity 0.5s ease";
+                cover.style.opacity = "0";
+                setTimeout(function() {
+                    cover.remove();
+                }, 500);
+            }
+        });
+    });
+    
+</script>
+
+
+</body>
+</html>
