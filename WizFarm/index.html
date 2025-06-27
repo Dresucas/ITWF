@@ -18,35 +18,6 @@
             <nav>
 
                 <div class="dropdown">
-                    <button class="dropbtn">events</button>
-                    <div class="dropdown-content">
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;" id="gamingEvent">
-                            <span >Gaming</span>
-                            <span><img  src="images/gaming.svg" alt="" width="20" height="20"></span>
-                        </a>
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;" id="codingEvent">
-                            <span >Coding</span>
-                            <span><img  src="images/code.svg" alt="" width="20" height="20"></span>
-                        </a>
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span >Editing</span>
-                            <span><img  src="images/editing.svg" alt="" width="20" height="20"></span>
-                        </a>
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span >Designing</span>
-                            <span><img  src="images/design.svg" alt="" width="20" height="20"></span>
-                        </a>
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;" id="photoEvent">
-                            <span >Photography</span>
-                            <span><img  src="images/photo.svg" alt="" width="20" height="20"></span>
-                        </a>
-                        <a href="#" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span >Videography</span>
-                            <span><img  src="images/video.svg" alt="" width="18" height="18"></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="dropdown">
                     <button class="dropbtn">details</button>
                     <div class="dropdown-content">
                         <a href="#" id="about" style="display: flex; justify-content: space-between; align-items: center;">
@@ -207,10 +178,11 @@
             </div>
         </div> -->
 
-        <span id="eventsButton"></span>
+        <span id="eventsButton" style="text-align: center;"></span>
         <script>
             setTimeout(function(){
-                var text = "enter";
+                var text = "events";
+                
                 var index = 0;
                 var typingSpeed = 100;
                 var element = document.getElementById('eventsButton');
@@ -234,7 +206,14 @@
             }, 3500);
 
 
-
+            document.getElementById('eventsButton').addEventListener("click", function(){
+                var section2 = document.getElementById('section2');
+                var rect = section2.getBoundingClientRect();
+                window.scrollTo({
+                    top: rect.top,
+                    behavior: 'smooth'
+                });
+            });
 
         </script>
 
@@ -256,6 +235,11 @@
             }
         }
     </script>
+
+
+    <section id="section2">
+        <iframe src="/section2/index.html" frameborder="0" scrolling="no" width="100%" height="100%" style="scale: 0.9;"></iframe>
+    </section>
 
 
 
